@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Query } from 'react-apollo';
-import { gql } from 'apollo-boost';
 
 import Login from './components/Login/Login';
 import Home from './components/Home/Home';
@@ -28,7 +26,7 @@ class App extends Component {
 
     // Bind the this context to the handler function
     this.toggleAuthenticate = this.toggleAuthenticate.bind(this);
-    localStorage.setItem('token', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im1hdXJpY2lvY2hhdmV6QGNpZW5jaWFzLnVuYW0ubXgiLCJleHAiOjE1NjM2NjkwNDcsIm9yaWdJYXQiOjE1NjM1ODI2NDd9.UDGvbEXlCKr_sXm0laM2ezH7oZ0_DxfkTr-4yOi8DlM');
+    localStorage.setItem('token', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im1hdXJpY2lvY2hhdmV6QGNpZW5jaWFzLnVuYW0ubXgiLCJleHAiOjE1NjM2NzEyOTAsIm9yaWdJYXQiOjE1NjM1ODQ4OTB9.fsJRsVN5vLED3MhliRetIKGKg_gf_DayW7tGGvv0_b4');
     // Set some state
     this.state = {
       authenticated: true,
@@ -49,19 +47,6 @@ class App extends Component {
         <Router>
           <AuthApp authenticated={this.state.authenticated} authToggler={this.toggleAuthenticate} />
         </Router>
-        <Query
-          query={gql`
-            {
-              helloAuthenticated
-            }
-          `}
-        >
-          {({ loading, error, data }) => {
-            if (loading) return <p>Loading...</p>;
-            if (error) {console.log(error); return <p>Error :(</p>;}
-            return <p>{data.helloAuthenticated}</p>
-          }}
-        </Query>
       </div>
     );
   }

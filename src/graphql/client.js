@@ -4,7 +4,8 @@ import { setContext } from 'apollo-link-context';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
 const httpLink = createHttpLink({
-  uri: 'https://waitress-backend.herokuapp.com/',
+  // uri: 'https://waitress-backend.herokuapp.com/',
+  uri: 'http://127.0.0.1:8000/',
 });
 
 const authLink = setContext((_, { headers }) => {
